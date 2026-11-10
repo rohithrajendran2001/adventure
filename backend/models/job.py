@@ -1,17 +1,16 @@
-from sqlalchemy import column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.sql import func
-from sqlalchemy.orm import relationship
-from backend.db.database import Base
+from db.database import Base
 
 class StoryJob(Base):
     __tablename__ = "story_jobs"
-    id = column(Integer, primary_key=True, index=True)
-    story_id = column(Integer, nullable=True)
-    job_id = column(String, index=True, unique=True)
-    created_at = column(DateTime(timezone=True), server_default=func.now())
-    theme = column(String, nullable=True)
-    status = column(String, nullable=True)
-    error = column(String, nullable=True)
-    completed_job = column(DateTime(timezone=True), nullable=True)
-    session_id = column(String, index=True, nullable=True)
+    id = Column(Integer, primary_key=True, index=True)
+    story_id = Column(Integer, nullable=True)
+    job_id = Column(String, index=True, unique=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    theme = Column(String, nullable=True)
+    status = Column(String, nullable=True)
+    error = Column(String, nullable=True)
+    completed_at = Column("completed_job", DateTime(timezone=True), nullable=True)
+    session_id = Column(String, index=True, nullable=True)
     

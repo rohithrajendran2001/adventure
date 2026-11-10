@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
 from pydantic import BaseModel
 
@@ -6,7 +6,7 @@ class StoryJobBase(BaseModel):
     theme: str
 
 class StoryJobResponse(StoryJobBase):
-    job_id: int
+    job_id: str
     status: str
     created_at: datetime
     story_id: Optional[int] = None

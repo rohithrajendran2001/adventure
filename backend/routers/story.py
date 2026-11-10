@@ -74,6 +74,7 @@ def generate_story_task(job_id: str, theme: str, session_id: str):
             job.completed_at = datetime.now()
             db.commit()
         except Exception as e:
+            db.rollback()
             job.status = "failed"
             job.completed_at = datetime.now()
             job.error = str(e)

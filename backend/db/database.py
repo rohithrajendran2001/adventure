@@ -6,12 +6,12 @@ from core.config import settings
 
 engine = create_engine(settings.DATABASE_URL)
 
-sesionlocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
 def get_db():
-    db = sesionlocal()
+    db = SessionLocal()
     try:
         yield db
     finally:
@@ -19,4 +19,3 @@ def get_db():
 
 def create_tables():
     Base.metadata.create_all(bind=engine)
-
